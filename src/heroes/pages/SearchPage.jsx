@@ -10,7 +10,7 @@ export const SearchPage = () => {
   const navegar = useNavigate()
   const localizacion = useLocation()
   //console.log(localizacion)
-  const {q = ''} = queryString.parse(location.search)
+  const {q = ''} = queryString.parse(localizacion.search)
   //console.log(query)
   const heroes = getHeroByName(q)
 
@@ -40,7 +40,7 @@ export const SearchPage = () => {
             <hr/>
             <form onSubmit={onEnviarBusqueda}>
               <input type="text" placeholder="Buscar un héroe" className="form-control" autoComplete="off"
-                name="textoBusqueda"
+                name='textoBusqueda'
                 value={textoBusqueda}
                 onChange={onInputChange}
               />
@@ -64,7 +64,7 @@ export const SearchPage = () => {
               Héroes...
             </div>
 
-            <div className="alert alert-danger animate__animated animate__fadeIn" style={{ display: muestraError ? '' : 'none' }}>
+            <div aria-label="alert-danger" className="alert alert-danger animate__animated animate__fadeIn" style={{ display: muestraError ? '' : 'none' }}>
               No hay coincidencias con <b>{ q }</b>
             </div>
 
